@@ -23,4 +23,5 @@ def get_repo_commits(user_id):
 
 repos = get_repo_commits("richkempinski")
 for repo in repos:
-    print(f"Repo: {repo[0]} Number of commits: {int(repo[1])}")
+    print("Repo: " + repo[0] + " Number of commits: " + str(int(repo[1])))
+
