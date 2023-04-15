@@ -4,7 +4,7 @@ import requests
 #get_repo_commits("Tirth-Patel903")
 def get_repo_commits(user_id):
     # make request to retrieve user's repositories  https://github.com/Tirth-Patel903
-    repos_url = f"https://api.github.com/users/{user_id}/repos"
+    repos_url = "https://api.github.com/users/{}/repos".format(user_id)
     repos_response = requests.get(repos_url)
     repos_json = repos_response.json()
 
