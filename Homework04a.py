@@ -13,7 +13,7 @@ def get_repo_commits(user_id):
     for repo in repos_json:
         if hasattr(repo, "name"):
             repo_name = repo["name"]
-            commits_url = f"https://api.github.com/repos/{user_id}/{repo_name}/commits"
+            commits_url = "https://api.github.com/repos/{}/ {}/commits".format(user_id, repo_name)
             commits_response = requests.get(commits_url)
             commits_json = commits_response.json()
             num_commits = len(commits_json)
