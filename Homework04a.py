@@ -11,15 +11,16 @@ def get_repo_commits(user_id):
     # iterate through repositories and retrieve number of commits for each
     result = []
     for repo in repos_json:
-        repo_name = repo["name"]
-        commits_url = f"https://api.github.com/repos/{user_id}/{repo_name}/commits"
-        commits_response = requests.get(commits_url)
-        commits_json = commits_response.json()
-        num_commits = len(commits_json)
-        result.append((repo_name, num_commits))
+        if hasattr(repo, "name"):
+            repo_name = repo["name"]
+            commits_url = f"https://api.github.com/repos/{user_id}/{repo_name}/commits"
+            commits_response = requests.get(commits_url)
+            commits_json = commits_response.json()
+            num_commits = len(commits_json)
+            result.append((repo_name, num_commits))
 
     return result
 
 repos = get_repo_commits("richkempinski")
 for repo in repos:
-    print(f"Repo: {repo[0]} Number of commits: {repo[1]}")
+    print(f"Repo: {repo[0]} Number of commits: {int(repo[1])}")
